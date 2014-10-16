@@ -1,0 +1,38 @@
+<div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title" ng-click="collapse.sf = !collapse.sf">Single Family Homes</h4>
+      </div>
+      <ul class="list-group stats" collapse="collapse.sf">
+        <li class="list-group-item clearfix">
+          <strong>Tent</strong>: ${{ prices.tent | number:2 }}
+          <button id="buyTent" class="btn btn-success pull-right" type="button" ng-click="buyTent()" disabled>Buy</button>
+        </li>
+        <li class="list-group-item clearfix">
+          <strong>Hut</strong>: ${{ prices.hut | number:2 }}
+          <button id="buyHut" class="btn btn-success pull-right" type="button" ng-click="buyHut()" disabled>Buy</button>
+        </li>
+        <li class="list-group-item clearfix">
+          <strong>Cabin</strong>: ${{ prices.cabin | number:2 }}
+          <button id="buyCabin" class="btn btn-success pull-right" type="button" ng-click="buyCabin()" disabled>Buy</button>
+        </li>
+        <li class="list-group-item clearfix">
+          <strong>House</strong>: ${{ prices.house | number:2 }}
+          <button id="buyHouse" class="btn btn-success pull-right" type="button" ng-click="buyHouse()" disabled>Buy</button>
+        </li>
+      </ul>
+      <div class="panel-heading">
+        <h4 class="panel-title" ng-click="collapse.mf = !collapse.mf">Multi Family Homes</h4>
+      </div>
+      <ul class="list-group stats" collapse="collapse.mf">
+        <li class="list-group-item clearfix">
+          <strong>Duplex</strong>: ${{ prices.duplex | number:2 }}
+          <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyDuplex()" disabled>Buy</button>
+        </li>
+        <li class="list-group-item clearfix">
+          <strong>Small Apartment</strong>: ${{ prices.smApt | number:2 }}
+          <button id="buySmApt" class="btn btn-success pull-right" type="button" ng-click="buySmApt()" disabled>Buy</button>
+        </li>
+      </ul>
+    </div><!-- panel -->
+</div>

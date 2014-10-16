@@ -1,0 +1,42 @@
+<div class="col-sm-3">
+  <ul class="list-group stats">
+    <li class="list-group-item">
+      <h4>Income: ${{ income | number:2 }}/s</h4>
+    </li>
+    <li class="list-group-item">
+      <h4>Residents: {{ totalResidents }}</h4>
+    </li>
+    <li class="list-group-item">
+    <div class="row sfResidential">
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/tent.svg" class="building" alt="tent"> {{ total.tent }}</p>
+      </div>
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/hut.svg" class="building" alt="hut"> {{ total.hut }}</p>
+      </div>
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/cabin.svg" class="building" alt="cabin"> {{ total.cabin }}</p>
+      </div>
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/house.svg" class="building" alt="house"> {{ total.house }}</p>
+      </div>
+    </div>
+    </li>
+    <li class="list-group-item">
+    <div class="row mfResidential">
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/duplex.png" class="building" alt="Duplex"> {{ total.duplex }}</p>
+      </div>
+      <div class="col-sm-3">
+        <p><img ng-src="assets/images/smApartment.svg" class="building" alt="small apartment"> {{ total.smApt }}</p>
+      </div>
+      <div class="col-sm-3">
+        
+      </div>
+      <div class="col-sm-3">
+        
+      </div>
+    </div>
+    </li>
+  </ul>
+</div>
