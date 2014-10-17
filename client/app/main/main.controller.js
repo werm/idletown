@@ -54,38 +54,25 @@ angular.module('clickerApp')
     $scope.canBuyDuplex = false;
     $scope.canBuySmApt = false;
 
+    function disableBtns() {
+      angular.forEach($scope.prices, function(v,k){
+        var capitalize = k.substring(0,1).toUpperCase()+k.substring(1)
+        if($scope.totalMoney >= v){
+          document.querySelector('#buy' + capitalize).removeAttribute('disabled');
+        } else {
+          document.querySelector('#buy' + capitalize).setAttribute('disabled', true);
+        }
+      }) 
+    }
+
+    function checkTotals(){
+      $scope.income = ($scope.total.tent * 0.1) + ($scope.total.hut * 0.25) + ($scope.total.cabin * 0.5) + ($scope.total.house * 0.75) + ($scope.total.duplex * 1) + ($scope.total.smApt * 1.25);
+      disableBtns();
+    }
+
     $scope.increment = function(){
       $scope.totalMoney++
-      if($scope.totalMoney >= $scope.prices.tent){
-        document.getElementById('buyTent').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyTent').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.hut){
-        document.getElementById('buyHut').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyHut').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.cabin){
-        document.getElementById('buyCabin').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyCabin').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.house){
-        document.getElementById('buyHouse').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyHouse').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.duplex){
-        document.getElementById('buyDuplex').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyDuplex').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.smApt){
-        document.getElementById('buySmApt').removeAttribute('disabled');
-      } else {
-        document.getElementById('buySmApt').setAttribute('disabled', true);
-      }
+      disableBtns();
     }
 
     $scope.buyTent = function(){
@@ -96,6 +83,7 @@ angular.module('clickerApp')
       $scope.totalResidents = $scope.totalResidents + $scope.residents.tent;
       $scope.total.tent++;
     }
+
 
     $scope.buyHut = function(){
       $scope.totalMoney = $scope.totalMoney - $scope.prices.hut;;
@@ -142,12 +130,21 @@ angular.module('clickerApp')
       $scope.total.smApt++;
     }
 
+    function multiplier(price){
+      angular.forEach($scope.owns, function(k, v){
+        if($scope.owns.k === true){
+          $scope.totalMoney = $scope.totalMoney + ($scope.total.k * price);
+        }
+      })
+
+    }
+
     $interval(function() {
       checkTotals();
-      updateTitle($scope.totalMoney.toFixed(2))
-      if($scope.owns.tent === true){
-        $scope.totalMoney = $scope.totalMoney + ($scope.total.tent * 0.01);
-      }
+      // updateTitle($scope.totalMoney.toFixed(2))
+      
+      multiplier(0.01)
+
       if($scope.owns.hut === true){
         $scope.totalMoney = $scope.totalMoney + ($scope.total.hut * 0.025);
       }
@@ -165,39 +162,6 @@ angular.module('clickerApp')
       }
     }, 100);
 
-     function checkTotals(){
-      $scope.income = ($scope.total.tent * 0.1) + ($scope.total.hut * 0.25) + ($scope.total.cabin * 0.5) + ($scope.total.house * 0.75) + ($scope.total.duplex * 1) + ($scope.total.smApt * 1.25);
-      if($scope.totalMoney >= $scope.prices.tent){
-        document.getElementById('buyTent').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyTent').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.hut){
-        document.getElementById('buyHut').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyHut').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.cabin){
-        document.getElementById('buyCabin').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyCabin').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.house){
-        document.getElementById('buyHouse').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyHouse').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.duplex){
-        document.getElementById('buyDuplex').removeAttribute('disabled');
-      } else {
-        document.getElementById('buyDuplex').setAttribute('disabled', true);
-      }
-      if($scope.totalMoney >= $scope.prices.smApt){
-        document.getElementById('buySmApt').removeAttribute('disabled');
-      } else {
-        document.getElementById('buySmApt').setAttribute('disabled', true);
-      }
-    }
 
     function updateTitle(val){
       document.title = '$' + val;
