@@ -1,4 +1,7 @@
-<div class="col-sm-3">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title">City Hall</h4>
+  </div>
   <ul class="list-group stats">
     <li class="list-group-item">
       <h4>Income: ${{ income | number:2 }}/s</h4>
@@ -7,36 +10,71 @@
       <h4>Residents: {{ totalResidents }}</h4>
     </li>
     <li class="list-group-item">
+      <h4>
+        Taxes: 
+        <span ng-show="taxRate">{{ taxRate }}%</span>
+        <span ng-hide="taxRate">0%</span>
+      </h4>
+      <div class="row">
+        <div class="col-sm-12">
+          <input ng-model="taxRate" type="text" id="taxRate" slider options="sliderOpts" />
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
     <div class="row sfResidential">
       <div class="col-sm-3">
-        <p><img ng-src="assets/images/tent.svg" class="building" alt="tent"> {{ total.tent }}</p>
+        <p tooltip="{{ building.tent.name }}s">
+          <img ng-src="assets/images/tent.svg" class="building" alt="tent"> {{ building.tent.residents * building.tent.total }}
+        </p>
       </div>
       <div class="col-sm-3">
-        <p><img ng-src="assets/images/hut.svg" class="building" alt="hut"> {{ total.hut }}</p>
+        <p tooltip="{{ building.hut.name }}">
+          <img ng-src="assets/images/hut.svg" class="building" alt="hut"> {{ building.hut.residents * building.hut.total }}
+        </p>
       </div>
       <div class="col-sm-3">
-        <p><img ng-src="assets/images/cabin.svg" class="building" alt="cabin"> {{ total.cabin }}</p>
+        <p tooltip="{{ building.cabin.name }}">
+          <img ng-src="assets/images/cabin.svg" class="building" alt="cabin"> {{ building.cabin.residents * building.cabin.total }}
+        </p>
       </div>
       <div class="col-sm-3">
-        <p><img ng-src="assets/images/house.svg" class="building" alt="house"> {{ total.house }}</p>
+        <p tooltip="{{ building.house.name }}">
+          <img ng-src="assets/images/house.svg" class="building" alt="house"> {{ building.house.residents * building.house.total }}
+        </p>
       </div>
     </div>
     </li>
     <li class="list-group-item">
-    <div class="row mfResidential">
-      <div class="col-sm-3">
-        <p><img ng-src="assets/images/duplex.png" class="building" alt="Duplex"> {{ total.duplex }}</p>
+      <div class="row mfResidential">
+        <div class="col-sm-3">
+          <p tooltip="{{ building.duplex.name }}">
+            <img ng-src="assets/images/duplex.png" class="building" alt="Duplex"> {{ building.duplex.residents * building.duplex.total }}
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p tooltip="{{ building.smApt.name }}">
+            <img ng-src="assets/images/smApt.svg" class="building" alt="small apartment"> {{ building.smApt.residents * building.smApt.total }}
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p tooltip="{{ building.mdApt.name }}">
+            <img ng-src="assets/images/mdApt.svg" class="building" alt="medium apartment"> {{ building.mdApt.residents * building.mdApt.total }}
+          </p>
+        </div>
+        <div class="col-sm-3">
+          <p tooltip="{{ building.lgApt.name }}">
+            <img ng-src="assets/images/lgApt.svg" class="building" alt="large apartment"> {{ building.lgApt.residents * building.lgApt.total }}
+          </p>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <p><img ng-src="assets/images/smApartment.svg" class="building" alt="small apartment"> {{ total.smApt }}</p>
+      <div class="row mfResidential">
+        <div class="col-sm-3">
+          <p tooltip="{{ building.aptComplex.name }}">
+            <img ng-src="assets/images/aptComplex.svg" class="building" alt="apartment complex"> {{ building.aptComplex.residents * building.aptComplex.total }}
+          </p>
+        </div>
       </div>
-      <div class="col-sm-3">
-        
-      </div>
-      <div class="col-sm-3">
-        
-      </div>
-    </div>
     </li>
   </ul>
 </div>

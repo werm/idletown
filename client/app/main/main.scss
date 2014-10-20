@@ -28,8 +28,9 @@ $hotBtnColor: #db5566;
 }
 
 .clickIt {
-    min-height: 100px;
     border-bottom: 6px solid #af4451;
+    font-size: 3em;
+    min-height: 100px;
     &:hover {
         border-bottom: 4px solid darken($hotBtnColor, 5%);
         color: #fff;
@@ -61,4 +62,23 @@ $hotBtnColor: #db5566;
 .totalMoney { 
     font-size: 5em;
     text-align: center;
+}
+
+.list-group-item h4 {
+    display: inline-block;
+}
+
+slider {
+    display: block;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.bubble.low {
+    background-color: #2980b9;
+    border: 1px solid darken(#2980b9, 20%);
+    border-radius: 50px;
+    color: #fff;
+    margin-top: -9px;
+    padding: 8px;
 }

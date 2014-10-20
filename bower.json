@@ -19,6 +19,11 @@
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
-    "angular-scenario": ">=1.2.*"
+    "angular-scenario": ">=1.2.*",
+    "angular-touch": "~1.3.0",
+    "ng-slider": "~0.1.4"
+  },
+  "resolutions": {
+    "angular-touch": "~1.3.0"
   }
 }

@@ -1,38 +1,48 @@
-<div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title" ng-click="collapse.sf = !collapse.sf">Single Family Homes</h4>
-      </div>
-      <ul class="list-group stats" collapse="collapse.sf">
-        <li class="list-group-item clearfix">
-          <strong>Tent</strong>: ${{ prices.tent | number:2 }}
-          <button id="buyTent" class="btn btn-success pull-right" type="button" ng-click="buyTent()" disabled>Buy</button>
-        </li>
-        <li class="list-group-item clearfix">
-          <strong>Hut</strong>: ${{ prices.hut | number:2 }}
-          <button id="buyHut" class="btn btn-success pull-right" type="button" ng-click="buyHut()" disabled>Buy</button>
-        </li>
-        <li class="list-group-item clearfix">
-          <strong>Cabin</strong>: ${{ prices.cabin | number:2 }}
-          <button id="buyCabin" class="btn btn-success pull-right" type="button" ng-click="buyCabin()" disabled>Buy</button>
-        </li>
-        <li class="list-group-item clearfix">
-          <strong>House</strong>: ${{ prices.house | number:2 }}
-          <button id="buyHouse" class="btn btn-success pull-right" type="button" ng-click="buyHouse()" disabled>Buy</button>
-        </li>
-      </ul>
-      <div class="panel-heading">
-        <h4 class="panel-title" ng-click="collapse.mf = !collapse.mf">Multi Family Homes</h4>
-      </div>
-      <ul class="list-group stats" collapse="collapse.mf">
-        <li class="list-group-item clearfix">
-          <strong>Duplex</strong>: ${{ prices.duplex | number:2 }}
-          <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyDuplex()" disabled>Buy</button>
-        </li>
-        <li class="list-group-item clearfix">
-          <strong>Small Apartment</strong>: ${{ prices.smApt | number:2 }}
-          <button id="buySmApt" class="btn btn-success pull-right" type="button" ng-click="buySmApt()" disabled>Buy</button>
-        </li>
-      </ul>
-    </div><!-- panel -->
-</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click="collapse.sf = !collapse.sf">Single Family Homes</h4>
+  </div>
+  <ul class="list-group stats" collapse="collapse.sf">
+    <li class="list-group-item clearfix">
+      <strong>Tent</strong>: ${{ building.tent.price | number:2 }}
+      <button id="buyTent" class="btn btn-success pull-right" type="button" ng-click="buyTent()" ng-disabled="building.tent.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Hut</strong>: ${{ building.hut.price | number:2 }}
+      <button id="buyHut" class="btn btn-success pull-right" type="button" ng-click="buyHut()" ng-disabled="building.hut.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Cabin</strong>: ${{ building.cabin.price | number:2 }}
+      <button id="buyCabin" class="btn btn-success pull-right" type="button" ng-click="buyCabin()" ng-disabled="building.cabin.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>House</strong>: ${{ building.house.price | number:2 }}
+      <button id="buyHouse" class="btn btn-success pull-right" type="button" ng-click="buyHouse()" ng-disabled="building.house.disabled">Buy</button>
+    </li>
+  </ul>
+  <div class="panel-heading">
+    <h4 class="panel-title" ng-click="collapse.mf = !collapse.mf">Multi Family Homes</h4>
+  </div>
+  <ul class="list-group stats" collapse="collapse.mf">
+    <li class="list-group-item clearfix">
+      <strong>Duplex</strong>: ${{ building.duplex.price | number:2 }}
+      <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyDuplex()" ng-disabled="building.duplex.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Small Apartment</strong>: ${{ building.smApt.price | number:2 }}
+      <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buySmApt()" ng-disabled="building.smApt.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Medium Apartment</strong>: ${{ building.mdApt.price | number:2 }}
+      <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyMdApt()" ng-disabled="building.mdApt.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Large Apartment</strong>: ${{ building.lgApt.price | number:2 }}
+      <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyLgApt()" ng-disabled="building.lgApt.disabled">Buy</button>
+    </li>
+    <li class="list-group-item clearfix">
+      <strong>Apartment Complex</strong>: ${{ building.aptComplex.price | number:2 }}
+      <button id="buyDuplex" class="btn btn-success pull-right" type="button" ng-click="buyAptComplex()" ng-disabled="building.aptComplex.disabled">Buy</button>
+    </li>
+  </ul>
+</div><!-- panel -->

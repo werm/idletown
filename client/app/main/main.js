@@ -8,4 +8,4 @@ angular.module('clickerApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });
-  });
+  })
