@@ -17,7 +17,7 @@
       </h4>
       <div class="row">
         <div class="col-sm-12">
-          <input ng-model="taxRate" type="text" id="taxRate" slider options="sliderOpts" />
+          <input ng-model="taxRate" ng-change="getTaxRate()" type="text" id="taxRate" slider options="sliderOpts" />
         </div>
       </div>
     </li>

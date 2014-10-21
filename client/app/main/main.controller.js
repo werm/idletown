@@ -5,11 +5,12 @@ angular.module('clickerApp')
 
     $scope.dev = false;
     $scope.devMoney = 0;
-
+    $scope.spawn = [];
     $scope.totalMoney = parseInt(0, 10).toFixed(2);
     $scope.totalResidents = 0;
     $scope.income = 0;
     $scope.taxRate = 0;
+    $scope.clickIncome = 1;
 
     $scope.sliderOpts = {
       from: 0,
@@ -159,9 +160,35 @@ angular.module('clickerApp')
 
     }
 
+    $scope.$on('spawnDollars', function(event, data) {
+      $scope.spawn.push({ data: data, dateCreated: new Date() });
+      // Wait to make sure DOM element has been added
+      $timeout(function() { 
+        var item = $(".dollars").last();
+        item.addClass('noSelect');
+        item.css({"top": data.y, "left": data.x});
+        item.text(data.text);
+        item.animate({top: (data.y - 100) + 'px', opacity: 0}, 2000, "linear");
+      }, 10);
+
+      // Remove it after two seconds
+      $timeout(function() {
+        $scope.spawn.shift();
+      }, 2000);
+    });
+
     $scope.increment = function($event){
-      $scope.totalMoney++
+      ($scope.totalMoney++) * $scope.clickIncome;
       disableBtns();
+      var randomSpead = 32,
+          offsetX = 4, 
+          offsetY = 16;
+      $rootScope.$broadcast('spawnDollars', {
+        text: '$' + $scope.clickIncome.toFixed(2),
+        x: event.x - offsetX - Math.random() * randomSpead + randomSpead / 2,
+        y: event.y - offsetY - Math.random() * randomSpead + randomSpead / 2,
+        time: new Date()
+      });
     }
 
     $scope.buyTent = function(){
@@ -246,8 +273,6 @@ angular.module('clickerApp')
 
     $interval(function() {
       disableBtns();
-      var totalBldg = []
-      var totalInc = []
       angular.forEach($scope.building, function(k,v){
         if(k.owns === true){
           $scope.totalMoney = $scope.totalMoney + ($scope.income * 0.1);
@@ -256,7 +281,7 @@ angular.module('clickerApp')
     }, 100);
 
     $scope.getTaxRate = function(){
-      console.log($scope.taxRate);
+      $scope.taxRate = $('#taxRate').val();
     }
 
     $scope.devMode = function(){
